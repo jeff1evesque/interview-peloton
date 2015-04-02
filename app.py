@@ -2,9 +2,12 @@
 # This file loads corresponding logic, and html template file(s), which
 #     allows the presentation of (asynchronous) content.
 import json
+import memcache
 from flask import Flask, render_template, request
 from logic.validation import validate_alphanum
 from logic.parser import get_content
+from logic.utility import linear_merge
+from logic.memcached_interface import Memcached
 from logic.utility import linear_merge
 
 # Initialize: create flask instance
@@ -19,6 +22,10 @@ def index():
 @app.route('/quiz/merge', methods=['POST', 'GET'])
 def quiz():
     if request.method == 'GET':
+        # local variables
+        list_stream_1 = []
+        list_stream_2 = []
+
         # validate query string
         stream_1 = request.args.get('stream1')
         stream_2 = request.args.get('stream2')
@@ -29,10 +36,31 @@ def quiz():
             content_2 = get_content(stream_1)
 
             # cache stream
+            cached = Memcached()
+            cached_stream_1 = cached.get('cStream1')
+            cached_stream_2 = cached.get('cStream2')
 
-            # sort, and merge streams
+            if cached_stream_1:
+                list_stream_1 = json.loads(cached_stream_1)
+                list_stream_1.append(content_1['current'])
+                cached.set('cStream1', json.dumps(list_stream_1))
+            else:
+                list_stream_1.append(content_1['current'])
+                cached.set('cStream1', json.dumps(list_stream_1))
+
+            if cached_stream_2:
+                list_stream_2 = json.loads(cached_stream_2)
+                list_stream_2.append(content_2['current'])
+                cached.set('cStream2', json.dumps(list_stream_2))
+            else:
+                list_stream_2.append(content_2['current'])
+                cached.set('cStream2', json.dumps(list_stream_2))
+
+            # merge streams
+            merged_streams = linear_merge(list_stream_1, list_stream_2)
 
             # return merged steams (list)
+            return json.dumps(merged_streams)
         else:
             list_error.append('the provided \'stream1\', and \'stream2\' each need to be a alphanumeric string, without spaces or special characters.')
             return json.dumps({'status': 'error', 'result': None, 'error': list_error})
