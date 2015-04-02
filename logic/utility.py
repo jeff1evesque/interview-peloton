@@ -1,3 +1,9 @@
+#!/usr/bin/python
+
+## @utility.py
+#  This file contains utility methods to sort, and merge lists.
+
+## qsort: sort a list in linear time using qsort algorithm.
 def qsort(inlist):
     if inlist == []:
         return []
@@ -7,6 +13,7 @@ def qsort(inlist):
         greater = qsort([x for x in inlist[1:] if x >= pivot])
         return lesser + [pivot] + greater
 
+## linear_merge: merge two lists in linear time.
 def linear_merge(list1, list2):
     result = []
     while list1 and list2:
