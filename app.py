@@ -32,7 +32,7 @@ def quiz():
 
             # sort, and merge streams
 
-            # return next cached value
+            # return merged steams (list)
         else:
             list_error.append('the provided \'stream1\', and \'stream2\' each need to be a alphanumeric string, without spaces or special characters.')
             return json.dumps({'status': 'error', 'result': None, 'error': list_error})
