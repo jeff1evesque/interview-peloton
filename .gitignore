@@ -1,0 +1,5 @@
+# Ignore project root (except exclamated files, and directories)
+/*.pyc
+/logic/*.pyc
+
+# Ignore and don't commit the following directories
