@@ -18,17 +18,19 @@ def index():
 ## quiz: main logic
 @app.route('/quiz/merge', methods=['POST', 'GET'])
 def quiz():
+    if request.method == 'GET':
+        # validate query string
 
-    # validate query string
+        # request streams from Peloton Server
 
-    # request streams from Peloton Server
+        # sort, and merge streams
 
-    # sort, and merge streams
+        # cache merge stream
 
-    # cache merge stream
-
-    # return next cached value
-    return 'yes'
+        # return next cached value
+    else:
+        error = 'Must provide valid \'GET\' request with \'stream1\', and \'stream2\' string parameters defined.'
+        return json.dumps({'status': 'error', 'result': None, 'error': list_error})
 
 # Execute: run application directly, instead of import
 if __name__ == '__main__':
