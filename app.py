@@ -20,14 +20,20 @@ def index():
 def quiz():
     if request.method == 'GET':
         # validate query string
+        stream_1 = request.args.get('stream1')
+        stream_2 = request.args.get('stream2')
 
-        # request streams from Peloton Server
+        if validate_alphanum(stream_1) and validate_alphanum(stream_2):
+            # request streams from Peloton Server
 
-        # sort, and merge streams
+            # sort, and merge streams
 
-        # cache merge stream
+            # cache merge stream
 
-        # return next cached value
+            # return next cached value
+        else:
+            list_error.append('the provided \'stream1\', and \'stream2\' each need to be a alphanumeric string, without spaces or special characters.')
+            return json.dumps({'status': 'error', 'result': None, 'error': list_error})
     else:
         error = 'Must provide valid \'GET\' request with \'stream1\', and \'stream2\' string parameters defined.'
         return json.dumps({'status': 'error', 'result': None, 'error': list_error})
