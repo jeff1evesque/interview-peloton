@@ -3,6 +3,7 @@
 #     allows the presentation of (asynchronous) content.
 import json
 from flask import Flask, render_template, request
+from logic.validation import validate_alphanum
 
 # Initialize: create flask instance
 app = Flask(__name__)
@@ -25,7 +26,7 @@ def quiz():
     # cache merge stream
 
     # return next cached value
-    return
+    return 'yes'
 
 # Execute: run application directly, instead of import
 if __name__ == '__main__':
