@@ -7,11 +7,12 @@ from flask import Flask, render_template, request
 # Initialize: create flask instance
 app = Flask(__name__)
 
-# Define Route: assign corresponding template, or logic to given path
+# index: define HTML template for base URL
 @app.route('/')
 def index():
     return render_template('index.html')
 
+## quiz_merge: main logic
 @app.route('/quiz/merge', methods=['POST', 'GET'])
 def quiz():
 
