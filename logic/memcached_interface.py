@@ -11,8 +11,9 @@ class Memcached(object):
 
     ## constructor:
     def __init__(self):
-        self.hostname = Memcached_Settings().get_hostname()
-        self.server   = memcache.Client([self.hostname])
+        self.host   = Memcached_Settings().get_host()
+        self.port   = Memcached_Settings().get_port()
+        self.server = memcache.Client([(self.host, self.port)])
  
     ## set: set value in memcached server.
     def set(self, key, value, expiry=900):
