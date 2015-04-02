@@ -42,17 +42,17 @@ def quiz():
 
             if cached_stream_1:
                 list_stream = json.loads(cached_stream_1)
-                cached.set('cStream1', json.dumps(list_stream_1))
+                cached_stream_1.set('cStream1', json.dumps(list_stream_1))
             else:
                 list_stream_1.append(content_1)
-                cached.set('cStream1', json.dumps(list_stream_1))
+                cached_stream_1.set('cStream1', json.dumps(list_stream_1))
 
             if cached_stream_2:
                 list_stream = json.loads(cached_stream_2)
-                cached.set('cStream2', json.dumps(list_stream_2))
+                cached_stream_2.set('cStream2', json.dumps(list_stream_2))
             else:
                 list_stream_2.append(content_2)
-                cached.set('cStream2', json.dumps(list_stream_2))
+                cached_stream_2.set('cStream2', json.dumps(list_stream_2))
 
             # merge streams
             merged_streams = linear_merge(list_stream_1, list_stream_2)
