@@ -21,6 +21,10 @@ def index():
 @app.route('/quiz/merge', methods=['POST', 'GET'])
 def quiz():
     if request.method == 'GET':
+        # local variables
+        list_stream_1 = []
+        list_stream_2 = []
+
         # validate query string
         stream_1 = request.args.get('stream1')
         stream_2 = request.args.get('stream2')
@@ -31,6 +35,23 @@ def quiz():
             content_2 = get_content(stream_1)
 
             # cache stream
+            cached = Memcached()
+            cached_stream_1 = cached.get('cStream1')
+            cached_stream_2 = cached.get('cStream2')
+
+            if cached_stream_1:
+                list_stream = json.loads(cached_stream_1)
+                cached.set('cStream1', json.dumps(list_stream_1))
+            else:
+                list_stream_1.append(content_1)
+                cached.set('cStream1', json.dumps(list_stream_1))
+
+            if cached_stream_2:
+                list_stream = json.loads(cached_stream_2)
+                cached.set('cStream2', json.dumps(list_stream_2))
+            else
+                list_stream_2.append(content_2)
+                cached.set('cStream2', json.dumps(list_stream_2))
 
             # sort, and merge streams
 
