@@ -28,9 +28,9 @@ def quiz():
             content_1 = get_content(stream_1)
             content_2 = get_content(stream_1)
 
-            # sort, and merge streams
+            # cache stream
 
-            # cache merge stream
+            # sort, and merge streams
 
             # return next cached value
         else:
