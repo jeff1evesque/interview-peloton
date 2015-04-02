@@ -58,6 +58,7 @@ def quiz():
             merged_streams = linear_merge(list_stream_1, list_stream_2)
 
             # return merged steams (list)
+            return merged_streams
         else:
             list_error.append('the provided \'stream1\', and \'stream2\' each need to be a alphanumeric string, without spaces or special characters.')
             return json.dumps({'status': 'error', 'result': None, 'error': list_error})
