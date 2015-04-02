@@ -25,6 +25,8 @@ def quiz():
 
         if validate_alphanum(stream_1) and validate_alphanum(stream_2):
             # request streams from Peloton Server
+            content_1 = get_content(stream_1)
+            content_2 = get_content(stream_1)
 
             # sort, and merge streams
 
