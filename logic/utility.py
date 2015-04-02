@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 ## @utility.py
-#  This file contains utility methods to sort, and merge lists.
+#  This file contains functions that sort, and merge lists.
 
 ## qsort: sort a list in linear time using qsort algorithm.
 def qsort(inlist):
