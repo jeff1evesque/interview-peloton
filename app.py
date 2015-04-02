@@ -12,7 +12,7 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-## quiz_merge: main logic
+## quiz: main logic
 @app.route('/quiz/merge', methods=['POST', 'GET'])
 def quiz():
 
