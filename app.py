@@ -50,7 +50,7 @@ def quiz():
             if cached_stream_2:
                 list_stream = json.loads(cached_stream_2)
                 cached.set('cStream2', json.dumps(list_stream_2))
-            else
+            else:
                 list_stream_2.append(content_2)
                 cached.set('cStream2', json.dumps(list_stream_2))
 
