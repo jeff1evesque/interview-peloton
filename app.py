@@ -8,6 +8,7 @@ from logic.validation import validate_alphanum
 from logic.parser import get_content
 from logic.utility import linear_merge
 from logic.memcached_interface import Memcached
+from logic.utility import linear_merge
 
 # Initialize: create flask instance
 app = Flask(__name__)
@@ -53,7 +54,8 @@ def quiz():
                 list_stream_2.append(content_2)
                 cached.set('cStream2', json.dumps(list_stream_2))
 
-            # sort, and merge streams
+            # merge streams
+            merged_streams = linear_merge(list_stream_1, list_stream_2)
 
             # return merged steams (list)
         else:
