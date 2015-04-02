@@ -41,24 +41,26 @@ def quiz():
             cached_stream_2 = cached.get('cStream2')
 
             if cached_stream_1:
-                list_stream = json.loads(cached_stream_1)
-                cached_stream_1.set('cStream1', json.dumps(list_stream_1))
+                list_stream_1 = json.loads(cached_stream_1)
+                list_stream_1.append(content_1['current'])
+                cached.set('cStream1', json.dumps(list_stream_1))
             else:
-                list_stream_1.append(content_1)
-                cached_stream_1.set('cStream1', json.dumps(list_stream_1))
+                list_stream_1.append(content_1['current'])
+                cached.set('cStream1', json.dumps(list_stream_1))
 
             if cached_stream_2:
-                list_stream = json.loads(cached_stream_2)
-                cached_stream_2.set('cStream2', json.dumps(list_stream_2))
+                list_stream_2 = json.loads(cached_stream_2)
+                list_stream_2.append(content_2['current'])
+                cached.set('cStream2', json.dumps(list_stream_2))
             else:
-                list_stream_2.append(content_2)
-                cached_stream_2.set('cStream2', json.dumps(list_stream_2))
+                list_stream_2.append(content_2['current'])
+                cached.set('cStream2', json.dumps(list_stream_2))
 
             # merge streams
             merged_streams = linear_merge(list_stream_1, list_stream_2)
 
             # return merged steams (list)
-            return merged_streams
+            return json.dumps(merged_streams)
         else:
             list_error.append('the provided \'stream1\', and \'stream2\' each need to be a alphanumeric string, without spaces or special characters.')
             return json.dumps({'status': 'error', 'result': None, 'error': list_error})
