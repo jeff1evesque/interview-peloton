@@ -9,24 +9,21 @@ class Memcached_Settings(object):
 
     ## constructor:
     def __init__(self):
-        self.host     = 'localhost'
-        self.port     = '5000'
-        self.hostname = self.host + ':' + self.port
+        self.host = 'localhost'
+        self.port = 5000
 
     ## get_hostname
-    def get_hostname(self):
-        return self.hostname
+    def get_host(self):
+        return self.host
 
-    ## set_hostname
-    def set_hostname(self, hostname):
-        self.hostname = hostname
+    ## get_port
+    def get_port(self):
+        return self.port
 
     ## set_host
     def set_host(self, host):
-        self.host     = host
-        self.hostname = host + ':' + self.port
+        self.host = host
 
     ## set_port
     def set_port(self, port):
-        self.port     = port
-        self.hostname = self.host + ':' + port
+        self.port = port
