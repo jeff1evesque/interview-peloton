@@ -50,7 +50,7 @@ git remote add upstream https://github.com/[YOUR-USERNAME]/interview-peloton.git
 
 ###Memcached
 
-This project implements [memcached](http://memcached.org/) as a means to store in-memory, key-value pairs of data.  Specifically, the result of the python [`requests`](https://github.com/jeff1evesque/interview-peloton/blob/master/README.md#requests), is converted into a json object, then stored within a memcached object.  This process can be seen within [`cached_stream.py`](https://github.com/jeff1evesque/interview-peloton/blob/master/logic/cached_stream.py), which contains the `cached_stream` function, implemented within [`app.py`](https://github.com/jeff1evesque/interview-peloton/blob/master/app.py).
+This project implements [memcached](http://memcached.org/) as a means to store in-memory, key-value pairs of data.  Specifically, the result of the python [`requests`](https://github.com/jeff1evesque/interview-peloton/blob/master/README.md#requests), is converted into json, then stored within a memcached object.  This process can be seen within [`cached_stream.py`](https://github.com/jeff1evesque/interview-peloton/blob/master/logic/cached_stream.py), which contains the `cached_stream` function, implemented within [`app.py`](https://github.com/jeff1evesque/interview-peloton/blob/master/app.py).
 
 ###Flask
 
