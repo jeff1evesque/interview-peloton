@@ -30,7 +30,7 @@ def quiz():
             content_1 = get_content(stream_1)['current']
             content_2 = get_content(stream_1)['current']
 
-            # cache stream
+            # cache stream, and return overall cached list
             cache = cached_stream(content_1, content_2)
             cached_list_1 = cache['first']
             cached_list_2 = cache['second']
