@@ -7,7 +7,6 @@ from logic.validation import validate_alphanum
 from logic.parser import get_content
 from logic.cached_stream import cached_stream
 from logic.utility import linear_merge
-from logic.utility import linear_merge
 
 # Initialize: create flask instance
 app = Flask(__name__)
