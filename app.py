@@ -2,12 +2,11 @@
 # This file loads corresponding logic, and html template file(s), which
 #     allows the presentation of (asynchronous) content.
 import json
-import memcache
 from flask import Flask, render_template, request
 from logic.validation import validate_alphanum
 from logic.parser import get_content
+from logic.cached_stream import cached_stream
 from logic.utility import linear_merge
-from logic.memcached_interface import Memcached
 from logic.utility import linear_merge
 
 # Initialize: create flask instance
@@ -22,42 +21,22 @@ def index():
 @app.route('/quiz/merge', methods=['POST', 'GET'])
 def quiz():
     if request.method == 'GET':
-        # local variables
-        list_stream_1 = []
-        list_stream_2 = []
-
         # validate query string
         stream_1 = request.args.get('stream1')
         stream_2 = request.args.get('stream2')
 
         if validate_alphanum(stream_1) and validate_alphanum(stream_2):
             # request streams from Peloton Server
-            content_1 = get_content(stream_1)
-            content_2 = get_content(stream_1)
+            content_1 = get_content(stream_1)['current']
+            content_2 = get_content(stream_1)['current']
 
-            # cache stream
-            cached = Memcached()
-            cached_stream_1 = cached.get('cStream1')
-            cached_stream_2 = cached.get('cStream2')
+            # cache stream, and return overall cached list
+            cache = cached_stream(content_1, content_2)
+            cached_list_1 = cache['first']
+            cached_list_2 = cache['second']
 
-            if cached_stream_1:
-                list_stream_1 = json.loads(cached_stream_1)
-                list_stream_1.append(content_1['current'])
-                cached.set('cStream1', json.dumps(list_stream_1))
-            else:
-                list_stream_1.append(content_1['current'])
-                cached.set('cStream1', json.dumps(list_stream_1))
-
-            if cached_stream_2:
-                list_stream_2 = json.loads(cached_stream_2)
-                list_stream_2.append(content_2['current'])
-                cached.set('cStream2', json.dumps(list_stream_2))
-            else:
-                list_stream_2.append(content_2['current'])
-                cached.set('cStream2', json.dumps(list_stream_2))
-
-            # merge streams
-            merged_streams = linear_merge(list_stream_1, list_stream_2)
+            # merge cached lists
+            merged_streams = linear_merge(cached_list_1, cached_list_2)
 
             # return merged steams (list)
             return json.dumps(merged_streams)
