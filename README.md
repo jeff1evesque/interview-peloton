@@ -16,6 +16,7 @@ The following packages are needed to be installed:
 sudo apt-get install python-pip
 sudo pip install Flask
 sudo pip install requests
+sudo apt-get install memcached
 ```
 
 **Note:** This project assumes [Ubuntu Server 14.04](http://www.ubuntu.com/download/server) as the operating system. If another system is preferred, simply download the above requirements, with respect to the systems *package manager* equivalent.
