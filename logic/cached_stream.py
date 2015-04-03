@@ -6,7 +6,9 @@ import json
 import memcache
 from logic.memcached_interface import Memcached
 
-## cached_stream:
+## cached_stream: either append data stream to existing memcached
+#                 object, or create a new memcached object, with
+#                 the supplied argument as its value.
 def cached_stream(content_1, content_2):
     # local variables
     list_stream_1   = []
