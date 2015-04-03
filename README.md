@@ -66,6 +66,19 @@ python app.py
 
 **Note:** when running the above `app.py`, ensure that the terminal window is not used for any other processes, while the web application is available to others.
 
+###Requests
+
+Python's [`requests`](http://docs.python-requests.org/) API, provides an elegant, yet easy implementation for making various [HTTP requests](http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods).  This project implements the `get` request, to parse the supplied `json` response, from the [Peloton API](ttps://api.pelotoncycle.com/quiz/next/stream_name), from a specified external webpage.
+
+The following `requests` implementation is made within `parser.py`:
+
+```
+  response = requests.get('https://api.pelotoncycle.com/quiz/next/' + stream)
+  return r.json()
+```
+
+**Note:** the above `json()` method, decodes the `response` as a json object.
+
 ##Execution
 
 Once `app.py` is running on a dedicated terminal window, this application can be accessed via any web-browser:
