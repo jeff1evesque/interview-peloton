@@ -2,12 +2,10 @@
 # This file loads corresponding logic, and html template file(s), which
 #     allows the presentation of (asynchronous) content.
 import json
-import memcache
 from flask import Flask, render_template, request
 from logic.validation import validate_alphanum
 from logic.parser import get_content
 from logic.utility import linear_merge
-from logic.memcached_interface import Memcached
 from logic.utility import linear_merge
 
 # Initialize: create flask instance
