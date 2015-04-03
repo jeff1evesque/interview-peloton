@@ -21,16 +21,17 @@ def index():
 @app.route('/quiz/merge', methods=['POST', 'GET'])
 def quiz():
     if request.method == 'GET':
-        # validate query string
+        # local variables
         stream_1 = request.args.get('stream1')
         stream_2 = request.args.get('stream2')
 
+        # validate query string, and execute logic
         if validate_alphanum(stream_1) and validate_alphanum(stream_2):
             # request streams from Peloton Server
             content_1 = get_content(stream_1)['current']
             content_2 = get_content(stream_1)['current']
 
-            # cache stream, and return overall cached list
+            # cache stream, and return overall cached list(s)
             cache = cached_stream(content_1, content_2)
             cached_list_1 = cache['first']
             cached_list_2 = cache['second']
