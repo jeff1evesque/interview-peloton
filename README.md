@@ -50,7 +50,7 @@ git remote add upstream https://github.com/[YOUR-USERNAME]/interview-peloton.git
 
 ###Memcached
 
-This project implemented [memcached](http://memcached.org/) as a means to store in-memory, key-value pairs of data.  Specifically, the result of the python [`requests`](https://github.com/jeff1evesque/interview-peloton/blob/master/README.md#requests), is converted into a json object, then stored within a memcached object.  This process can be seen within [`cached_stream.py`](https://github.com/jeff1evesque/interview-peloton/blob/master/logic/cached_stream.py), which contains the `cached_stream` function, implemented within [`app.py`](https://github.com/jeff1evesque/interview-peloton/blob/master/app.py).
+This project implements [memcached](http://memcached.org/) as a means to store in-memory, key-value pairs of data.  Specifically, the result of the python [`requests`](https://github.com/jeff1evesque/interview-peloton/blob/master/README.md#requests), is converted into a json object, then stored within a memcached object.  This process can be seen within [`cached_stream.py`](https://github.com/jeff1evesque/interview-peloton/blob/master/logic/cached_stream.py), which contains the `cached_stream` function, implemented within [`app.py`](https://github.com/jeff1evesque/interview-peloton/blob/master/app.py).
 
 ###Flask
 
@@ -71,7 +71,7 @@ python app.py
 
 Python's [`requests`](http://docs.python-requests.org/) API, provides an elegant, yet easy implementation for making various [HTTP requests](http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods).  This project implements the `get` request, to parse the supplied `json` response, from the [Peloton API](ttps://api.pelotoncycle.com/quiz/next/stream_name), from a specified external webpage.
 
-The following `requests` implementation is made within `parser.py`:
+The following `requests` implementation is made within [`parser.py`](https://github.com/jeff1evesque/interview-peloton/blob/master/logic/parser.py):
 
 ```
   response = requests.get('https://api.pelotoncycle.com/quiz/next/' + stream)
