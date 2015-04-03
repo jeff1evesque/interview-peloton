@@ -1,7 +1,7 @@
 interview-peloton
 ================
 
-A coding [exercise](https://github.com/jeff1evesque/interview-peloton/blob/master/data/PelotonCycleBackendTestTask.pdf) was given to me, when I interviewed for a Backend Software Engineer position at [Peloton Cycle](https://www.pelotoncycle.com/).  This exercise was not restricted with a time limit - but, was recommended only to take a few hours.  Since this exercise was premised on the python language, no arbitrary css, or javascipt was coded.
+A coding [exercise](https://github.com/jeff1evesque/interview-peloton/blob/master/data/PelotonCycleBackendTestTask.pdf) was given to me, when I interviewed for a Backend Software Engineer position at [Peloton Cycle](https://www.pelotoncycle.com/).  This exercise was not restricted with a time limit.  However, was recommended to take a few hours.  Since this exercise was premised on the python language, no arbitrary css, or javascipt was coded.
 
 **Note:** the exercise [instructions](https://github.com/jeff1evesque/interview-peloton/blob/master/data/PelotonCycleBackendTestTask.pdf) can be found in the [`data/`](https://github.com/jeff1evesque/interview-peloton/tree/master/data/) subdirectory.
 
