@@ -14,8 +14,16 @@ def qsort(inlist):
         return lesser + [pivot] + greater
 
 ## linear_merge: merge two lists in linear time.
-def linear_merge(list1, list2):
+def linear_merge(list1, list2, sorted=True):
+    # local variables
     result = []
+
+    # sort each list, if not sorted
+    if not sorted:
+        list1 = qsort(list1)
+        list2 = qsort(list2)
+
+    # merge the two lists
     while list1 and list2:
         if list1[-1] > list2[-1]:
             result.append(list1.pop())
@@ -23,4 +31,6 @@ def linear_merge(list1, list2):
             result.append(list2.pop())
     result+=(list1+list2)[::-1]
     result.reverse()
+
+    # return merged list
     return result
