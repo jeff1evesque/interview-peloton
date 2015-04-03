@@ -8,7 +8,10 @@ from logic.memcached_interface import Memcached
 
 ## cached_stream:
 def cached_stream(content_1, content_2):
-    cached = Memcached()
+    # local variables
+    list_stream_1   = []
+    list_stream_2   = []
+    cached          = Memcached()
     cached_stream_1 = cached.get('cStream1')
     cached_stream_2 = cached.get('cStream2')
 
