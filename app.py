@@ -21,10 +21,6 @@ def index():
 @app.route('/quiz/merge', methods=['POST', 'GET'])
 def quiz():
     if request.method == 'GET':
-        # local variables
-        list_stream_1 = []
-        list_stream_2 = []
-
         # validate query string
         stream_1 = request.args.get('stream1')
         stream_2 = request.args.get('stream2')
