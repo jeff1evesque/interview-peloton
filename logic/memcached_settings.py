@@ -12,7 +12,7 @@ class Memcached_Settings(object):
         self.host = 'localhost'
         self.port = 5000
 
-    ## get_hostname
+    ## get_host
     def get_host(self):
         return self.host
 
