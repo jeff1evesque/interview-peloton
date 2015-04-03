@@ -32,3 +32,6 @@ def cached_stream(content_1, content_2):
     else:
         list_stream_2.append(content_2)
         cached.set('cStream2', json.dumps(list_stream_2))
+
+    # return streams
+    return {'first': list_stream_1, 'second': list_stream_2}
