@@ -31,13 +31,16 @@ def quiz():
 
         if validate_alphanum(stream_1) and validate_alphanum(stream_2):
             # request streams from Peloton Server
-            content_1 = get_content(stream_1)
-            content_2 = get_content(stream_1)
+            content_1 = get_content(stream_1)['current']
+            content_2 = get_content(stream_1)['current']
 
             # cache stream
+            cache = cached_stream(content_1, content_2)
+            cached_list_1 = cache['first']
+            cached_list_2 = cache['second']
 
-            # merge streams
-            merged_streams = linear_merge(list_stream_1, list_stream_2)
+            # merge cached lists
+            merged_streams = linear_merge(cached_list_1, cached_list_2)
 
             # return merged steams (list)
             return json.dumps(merged_streams)
